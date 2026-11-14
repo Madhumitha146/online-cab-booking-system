@@ -1,0 +1,137 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    color: #f8fafc;
+    background: linear-gradient(135deg, #071426, #102b4e);
+    padding: 40px 20px;
+}
+
+header {
+    text-align: center;
+    margin: 20px auto 35px;
+}
+
+header h1 {
+    color: #ffd43b;
+    font-size: 38px;
+    margin-bottom: 12px;
+}
+
+header p {
+    color: #cbd5e1;
+    font-size: 17px;
+}
+
+main {
+    max-width: 850px;
+    margin: auto;
+}
+
+.hero {
+    text-align: center;
+    padding: 30px 20px;
+    margin-bottom: 25px;
+}
+
+.hero h2 {
+    font-size: 30px;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.hero h2 span {
+    color: #ffd43b;
+}
+
+.hero p,
+.booking-card p {
+    color: #cbd5e1;
+    line-height: 1.7;
+}
+
+.booking-card {
+    max-width: 480px;
+    margin: auto;
+    background: #ffffff;
+    color: #102033;
+    padding: 32px;
+    border-radius: 18px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3);
+}
+
+.booking-card h3 {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.booking-card p {
+    color: #64748b;
+    margin-bottom: 18px;
+}
+
+form {
+    width: 100%;
+}
+
+input {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    margin: 15px 0;
+    border: 1px solid #d1d5db;
+    border-radius: 9px;
+    font-size: 15px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #eab308;
+    box-shadow: 0 0 0 3px rgba(234, 179, 8, 0.2);
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 10px;
+    background: #ffd43b;
+    color: #102033;
+    border: none;
+    border-radius: 9px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: #f5bd00;
+    transform: translateY(-2px);
+}
+
+a {
+    color: #b8860b;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 20px 14px;
+    }
+
+    header h1 {
+        font-size: 30px;
+    }
+
+    .hero h2 {
+        font-size: 24px;
+    }
+
+    .booking-card {
+        padding: 24px;
+    }
+}

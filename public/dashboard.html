@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CabRide Dashboard</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f6fb;
+            color: #172b4d;
+        }
+
+        header {
+            background: #142b4a;
+            color: white;
+            padding: 22px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        header h1 {
+            color: #ffd166;
+        }
+
+        header button {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 7px;
+            background: #ffd166;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .welcome {
+            padding: 35px 7% 15px;
+        }
+
+        .welcome h2 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .welcome p {
+            color: #667085;
+        }
+
+        .container {
+            padding: 20px 7% 50px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 22px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px #172b4d10;
+        }
+
+        .card .emoji {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #667085;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .card a {
+            display: inline-block;
+            padding: 12px 18px;
+            background: #f5b82e;
+            color: #142b4a;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .recent {
+            background: white;
+            padding: 25px;
+            margin-top: 25px;
+            border-radius: 15px;
+        }
+
+        .recent p {
+            color: #667085;
+            margin-top: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #142b4a;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>CabRide 🚕</h1>
+        <button onclick="logout()">Logout</button>
+    </header>
+
+    <section class="welcome">
+        <h2>Welcome to CabRide!</h2>
+        <p>Your journey starts here. Book a comfortable ride in just a few clicks.</p>
+    </section>
+
+    <main class="container">
+        <section class="cards">
+            <div class="card">
+                <div class="emoji">🚖</div>
+                <h3>Book a Cab</h3>
+                <p>Enter your pickup and destination to book your next ride.</p>
+                <a href="/">Book Now</a>
+            </div>
+
+            <div class="card">
+                <div class="emoji">📋</div>
+                <h3>My Bookings</h3>
+                <p>View the booking records saved in the system.</p>
+                <a href="/bookings">View Bookings</a>
+            </div>
+
+            <div class="card">
+                <div class="emoji">🛡️</div>
+                <h3>Safe Journey</h3>
+                <p>Check your ride details before confirming a booking.</p>
+                <a href="/" >Start Journey</a>
+            </div>
+        </section>
+
+        <section class="recent">
+            <h3>Account Details</h3>
+            <p id="accountEmail">Logged-in account</p>
+        </section>
+    </main>
+
+    <footer>
+        © 2026 CabRide | Online Cab Booking System
+    </footer>
+
+    <script>
+        const loggedIn = sessionStorage.getItem("cabRideLoggedIn");
+
+        if (loggedIn !== "true") {
+            window.location.replace("/login.html");
+        } else {
+            const email = sessionStorage.getItem("cabRideEmail") || "";
+            document.getElementById("accountEmail").textContent =
+                "Email: " + email;
+        }
+
+        function logout() {
+            sessionStorage.removeItem("cabRideLoggedIn");
+            sessionStorage.removeItem("cabRideEmail");
+            window.location.href = "/login.html";
+        }
+    </script>
+</body>
+</html>

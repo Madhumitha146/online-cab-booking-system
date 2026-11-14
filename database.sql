@@ -1,0 +1,12 @@
+CREATE DATABASE IF NOT EXISTS cab_booking;
+USE cab_booking;
+
+CREATE TABLE IF NOT EXISTS bookings (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_name VARCHAR(100) NOT NULL,
+    pickup VARCHAR(200) NOT NULL,
+    destination VARCHAR(200) NOT NULL,
+    cab_type VARCHAR(50) NOT NULL,
+    booking_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    status VARCHAR(20) DEFAULT 'Booked'
+);

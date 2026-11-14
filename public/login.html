@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CabRide | Login</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #102542, #235789);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 420px;
+            background: white;
+            padding: 38px;
+            border-radius: 20px;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
+        }
+
+        .logo {
+            text-align: center;
+            font-size: 32px;
+            font-weight: bold;
+            color: #17365d;
+            margin-bottom: 10px;
+        }
+
+        .logo span {
+            color: #e8a817;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #718096;
+            margin-bottom: 28px;
+            line-height: 1.5;
+        }
+
+        h2 {
+            color: #17365d;
+            margin-bottom: 22px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: bold;
+            margin: 17px 0 8px;
+            color: #27364b;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #d5dce5;
+            border-radius: 9px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #235789;
+            box-shadow: 0 0 0 3px #23578918;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 15px;
+            margin-top: 25px;
+            background: #f5b82e;
+            color: #142b4a;
+            border: none;
+            border-radius: 9px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .login-button:hover {
+            background: #e7a91e;
+        }
+
+        #message {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 14px;
+            color: #c62828;
+        }
+
+        .footer {
+            margin-top: 25px;
+            text-align: center;
+            color: #7a8493;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="logo">Cab<span>Ride</span> 🚕</div>
+
+        <p class="subtitle">
+            Your journey begins here.<br>
+            Login to book your next ride.
+        </p>
+
+        <h2>Welcome Back!</h2>
+
+        <form id="loginForm">
+            <label for="email">Email Address</label>
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                autocomplete="username"
+                required
+            >
+
+            <label for="password">Password</label>
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter your password"
+                autocomplete="current-password"
+                required
+            >
+
+            <button class="login-button" type="submit">
+                Login to CabRide
+            </button>
+
+            <p id="message" role="status"></p>
+        </form>
+
+        <p class="footer">
+            Online Cab Booking System
+        </p>
+    </div>
+
+    <script>
+        const form = document.getElementById("loginForm");
+        const message = document.getElementById("message");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value;
+
+            if (!email || !password) {
+                message.textContent = "Please enter your email and password.";
+                return;
+            }
+
+            // Demo login only — not real password verification.
+            sessionStorage.setItem("cabRideLoggedIn", "true");
+            sessionStorage.setItem("cabRideEmail", email);
+
+            window.location.href = "/dashboard.html";
+        });
+    </script>
+</body>
+</html>

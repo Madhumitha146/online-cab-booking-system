@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CabRide - Online Cab Booking</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f3f6fb;
+    color: #1d2738;
+}
+
+header {
+    background: #142b4a;
+    color: white;
+    padding: 22px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+header h1 {
+    color: #ffd166;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.hero {
+    text-align: center;
+    padding: 45px 20px 25px;
+}
+
+.hero h2 {
+    font-size: 34px;
+    margin-bottom: 12px;
+}
+
+.hero p {
+    color: #667085;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 550px;
+    margin: 20px auto 50px;
+    padding: 30px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px #172b4d12;
+}
+
+.container h2 {
+    margin-bottom: 20px;
+    color: #142b4a;
+}
+
+label {
+    display: block;
+    margin: 16px 0 7px;
+    font-weight: bold;
+}
+
+input, select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ccd3df;
+    border-radius: 8px;
+    font-size: 15px;
+    background: white;
+}
+
+input:focus, select:focus {
+    outline: 2px solid #f5b82e;
+    border-color: #f5b82e;
+}
+
+.fare-box {
+    margin-top: 22px;
+    padding: 20px;
+    background: #fff7df;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.fare-box p {
+    color: #667085;
+    margin-bottom: 8px;
+}
+
+.fare-box h2 {
+    color: #142b4a;
+    font-size: 30px;
+    margin: 0;
+}
+
+.small-note {
+    font-size: 12px;
+    color: #667085;
+    margin-top: 8px;
+}
+
+button {
+    width: 100%;
+    margin-top: 22px;
+    padding: 14px;
+    background: #f5b82e;
+    color: #142b4a;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #e6a719;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+#message {
+    margin-top: 18px;
+    text-align: center;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.success {
+    color: #187443;
+}
+
+.error {
+    color: #c62828;
+}
+
+footer {
+    text-align: center;
+    padding: 22px;
+    background: #142b4a;
+    color: white;
+}
+
+@media (max-width: 600px) {
+    .container {
+        margin: 20px 14px 35px;
+        padding: 22px;
+    }
+
+    .hero h2 {
+        font-size: 28px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>CabRide</h1>
+    <a href="/dashboard.html">Dashboard</a>
+</header>
+
+<section class="hero">
+    <h2>Your Ride, Your Way.</h2>
+    <p>Book your cab easily, safely and comfortably.</p>
+</section>
+
+<main class="container" id="booking">
+    <h2>Book Your Ride</h2>
+
+    <form id="bookingForm">
+
+        <label for="customer_name">Your Name</label>
+        <input
+            id="customer_name"
+            name="customer_name"
+            type="text"
+            placeholder="Enter your name"
+            required
+        >
+
+        <label for="pickup">Pickup Location</label>
+        <input
+            id="pickup"
+            name="pickup"
+            type="text"
+            placeholder="Enter pickup location"
+            required
+        >
+
+        <label for="destination">Destination</label>
+        <input
+            id="destination"
+            name="destination"
+            type="text"
+            placeholder="Enter destination"
+            required
+        >
+
+        <label for="cab_type">Select Cab Type</label>
+        <select id="cab_type" name="cab_type">
+            <option value="Mini" data-rate="12">Mini - ₹12/km</option>
+            <option value="Sedan" data-rate="16">Sedan - ₹16/km</option>
+            <option value="SUV" data-rate="22">SUV - ₹22/km</option>
+        </select>
+
+        <label for="distance">Estimated Distance (km)</label>
+        <input
+            id="distance"
+            type="number"
+            min="1"
+            max="500"
+            step="0.1"
+            placeholder="Enter distance in km"
+            required
+        >
+
+        <div class="fare-box">
+            <p>Estimated Booking Amount</p>
+            <h2 id="fare">₹0.00</h2>
+            <p class="small-note">
+                Fare = Distance × Selected cab rate.
+                This is a sample estimate.
+            </p>
+        </div>
+
+        <label for="payment_method">Payment Method</label>
+        <select id="payment_method" name="payment_method">
+            <option value="Prepaid">Prepaid - Pay Now (Demo)</option>
+            <option value="Cash">Cash - Pay Later</option>
+        </select>
+
+        <button type="submit" id="bookButton">
+            Book My Cab
+        </button>
+
+    </form>
+
+    <p id="message" role="status" aria-live="polite"></p>
+</main>
+
+<footer>
+    © 2026 CabRide | Online Cab Booking System
+</footer>
+
+<script>
+const form = document.getElementById("bookingForm");
+const message = document.getElementById("message");
+const distanceInput = document.getElementById("distance");
+const cabType = document.getElementById("cab_type");
+const paymentMethod = document.getElementById("payment_method");
+const fareDisplay = document.getElementById("fare");
+const bookButton = document.getElementById("bookButton");
+
+function calculateFare() {
+    const distance = Number(distanceInput.value);
+    const rate = Number(
+        cabType.options[cabType.selectedIndex].dataset.rate
+    );
+
+    if (distance > 0 && distance <= 500) {
+        const fare = distance * rate;
+        fareDisplay.textContent = "₹" + fare.toFixed(2);
+        return fare;
+    }
+
+    fareDisplay.textContent = "₹0.00";
+    return 0;
+}
+
+distanceInput.addEventListener("input", calculateFare);
+cabType.addEventListener("change", calculateFare);
+
+form.addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const distance = Number(distanceInput.value);
+    const fare = calculateFare();
+
+    if (!distance || distance < 1 || distance > 500 || fare <= 0) {
+        message.className = "error";
+        message.textContent = "Please enter a valid distance.";
+        return;
+    }
+
+    const booking = {
+        customer_name: document.getElementById("customer_name").value.trim(),
+        pickup: document.getElementById("pickup").value.trim(),
+        destination: document.getElementById("destination").value.trim(),
+        cab_type: cabType.value,
+        distance: distance,
+        fare: fare,
+        payment_method: paymentMethod.value
+    };
+
+    if (!booking.customer_name || !booking.pickup || !booking.destination) {
+        message.className = "error";
+        message.textContent = "Please fill in all booking details.";
+        return;
+    }
+
+    message.className = "";
+    message.textContent = "Processing your booking...";
+    bookButton.disabled = true;
+
+    try {
+        if (booking.payment_method === "Prepaid") {
+            message.textContent =
+                "Demo payment selected. No real money will be charged.";
+        }
+
+        const response = await fetch("/book", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(booking)
+        });
+
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+            throw new Error(result.message || "Booking failed.");
+        }
+
+        message.className = "success";
+        message.textContent =
+            "Cab booked successfully! Booking ID: " +
+            result.bookingId +
+            " | Estimated Fare: ₹" +
+            fare.toFixed(2) +
+            " | Payment: " +
+            (booking.payment_method === "Prepaid"
+                ? "Demo prepaid selected (not charged)"
+                : "Pay later");
+
+        form.reset();
+        calculateFare();
+
+    } catch (error) {
+        message.className = "error";
+        message.textContent =
+            error.message ||
+            "Unable to connect. Please check whether the server is running.";
+    } finally {
+        bookButton.disabled = false;
+    }
+});
+</script>
+
+</body>
+</html>
